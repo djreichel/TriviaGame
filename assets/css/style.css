@@ -1,0 +1,322 @@
+body{
+    background-color: black;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    /*line-height: 40px;*/
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    /*line-height: 5px;*/
+}
+
+h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    /*line-height: 10px;*/
+}
+
+h4 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#gameName {
+    /*padding: 10px;*/
+    width: 400px;
+    margin-top: 50px;
+    float: left;
+}
+
+/*p1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    padding-left: 50px;
+}*/
+
+
+#gamePlay {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 900px;
+    border-left: solid 2px #009eef;
+    float: left;
+}
+
+#ready {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    margin-top: 20px;
+    width: 95px;
+    float: left;
+    cursor: pointer;
+    /*border: solid 1px red;*/
+}
+
+#go {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    width: 105px;
+    float: left;
+    animation: go-blink;
+    animation-duration: 30s;
+}
+
+@keyframes go-blink {
+    0% {color: black;}
+    5% {color: #c4c975;}
+    10% {color: black;}
+    15% {color: #c4c975;}
+    20% {color: black;}
+    25% {color: #c4c975;}
+    30% {color: black;}
+    35% {color: #c4c975;}
+    40% {color: black;}
+    45% {color: #c4c975;}
+    50% {color: black;}
+    55% {color: #c4c975;}
+    60% {color: black;}
+    65% {color: #c4c975;}
+    70% {color: black;}
+    75% {color: #c4c975;}
+    80% {color: black;}
+    85% {color: #c4c975;}
+    90% {color: black;}
+    95% {color: #c4c975;}
+    100% {color: black;}
+}
+
+#timeRemaining {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    margin-top: 20px;
+    width: 175px;
+    float: left;
+}
+
+#countdown {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    width: 325px;
+    float: left;
+}
+
+#message {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    float: left;
+}
+
+#confirm {
+    width: 50px;
+    height: 50px;
+    clear: left;
+    float: left;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#confirm1 {
+    width: 50px;
+    height: 50px;
+    clear: left;
+    float: left;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#confirm2 {
+    width: 50px;
+    height: 50px;
+    clear: left;
+    float: left;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#confirm3 {
+    width: 50px;
+    height: 50px;
+    clear: left;
+    float: left;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#confirm4 {
+    width: 50px;
+    height: 50px;
+    clear: left;
+    float: left;
+    background-color: white;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#answers1 {
+    width: 100px;
+    height: 50px;
+    align-content: center;
+    margin-top: 50px;
+    float: left;
+}
+
+#answers2 {
+    width: 100px;
+    height: 50px;
+    align-content: center;
+    margin-top: 50px;
+    float: left;
+}
+
+#answers3 {
+    width: 100px;
+    height: 50px;
+    align-content: center;
+    margin-top: 50px;
+    float: left;
+}
+
+#answers4 {
+    width: 100px;
+    height: 50px;
+    align-content: center;
+    margin-top: 50px;
+    float: left;
+}
+
+#Q {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    width: 75px;
+    height: 50px;
+    float: left;
+    margin-top: 50px;
+}
+
+#question1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    width: 450px;
+    height: 50px;
+    float: left;
+    margin-top: 50px;
+}
+
+#aTrue1 {
+    background-color:#41ad49;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aTrue2 {
+    background-color:#41ad49;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aTrue3 {
+    background-color:#41ad49;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aTrue4 {
+    background-color:#41ad49;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+#aFalse1 {
+    background-color:#d22329;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aFalse2 {
+    background-color:#d22329;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aFalse3 {
+    background-color:#d22329;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#aFalse4 {
+    background-color:#d22329;
+    color: white;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/*#firstQuestion {
+    border-bottom: solid 2px blue;
+}*/
