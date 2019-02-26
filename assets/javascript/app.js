@@ -3,7 +3,7 @@
 //Players click on true or false buttons.
 //When player answers - imediately display check for right or x for wrong.
 
-alert("Hello");
+//alert("hello");
 
 $(document).ready(function() {
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
         choices: ["True", "False"],
         validAnswer: 1
         }, 
-        {   question:"Redbubble is a print-on-demad website where you can buy cool t-shirts and other custom products?",
+        {   question:"Redbubble is a print-on-demand website where you can buy cool t-shirts and other custom designed products?",
         choices: ["True", "False"],
         validAnswer: 0
         }, 
@@ -78,32 +78,30 @@ $(document).ready(function() {
     $("#countdown").html(number);
     if (number === 0) {
         stop();
-        //  when time runs out alert player of right and wrong answers. Invite player to play again
-        alert("Time's up", "Number of right answers: " + rightAnswers, "Number of wrong answers: " + wrongAnswers, "Please play again!");
     }
     }
 //  Stop
     function stop() {
     clearInterval(startCounting);
+    //  when time runs out alert player of right and wrong answers. Invite player to play again
+    alert("Time's up", "Number of right answers: " + rightAnswers, "Number of wrong answers: " + wrongAnswers, "Please play again!");
     }
-    //  Execute the run function.
-    //run();
 //  timer code ends here
 
 //  function to choose and display random question in the 4 different question divs
     function displayQuestions() {
-        for (i = 0; i < questions.length; i++) {
-            $("#question1").append("questions[i]")
-            $("#question2").append("questions[i]")
-            $("#question3").append("questions[i]")
-            $("#question4").append("questions[i]")
-                console.log("questions[i]")
+        for (var i = 0; i < questions.length; i++) {
+            $("#question1").text(questions[i])
+            $("#question2").text(questions[i])
+            $("#question3").text(questions[i])
+            $("#question4").text(questions[i])
+                console.log(questions[i])
         }
     }; displayQuestions();
 //  display questions function ends here
 
 //  function to capture player answer, display correct or incorrect graphic associated with that choice in the 4 different confirm divs
-//  and add one to the appropriate right vs. wrong answers variable
+//  and increase by one the appropriate right vs. wrong answers variable
     function displayAnswers()   {
         $(".answers1").on("click", function(event) {
             if (userPick == questions[i].validAnswer)  {
@@ -120,11 +118,12 @@ $(document).ready(function() {
                     $("#confirm4").attr("src", "assets/images/xmark.jpg");
                     wrongAnswer++
                         console.log("Number of wrong answers: " + wrongAnswers);
-        }); 
-// The on click event should execute the display answers function
-//  display answers function ends here        
+        })
+    }; 
+        // The on click event should execute the display answers function
+        //  display answers function ends here        
 
-//  this event replaces the four answered questions with new questions and clears the answer graphics from the 4 different confirm divs
+        //  this event replaces the four answered questions with new questions and clears the answer graphics from the 4 different confirm divs
     $("#playAgain").on("click", function() { 
         displayQuestions();
             $("#confirm1").empty();
@@ -133,4 +132,7 @@ $(document).ready(function() {
             $("#confirm4").empty();
                 console.log("play again button was clicked");
     });
-    //  play again function ends here
+       //  play again function ends here
+});
+
+ 
