@@ -8,8 +8,8 @@
 $(document).ready(function() {
 
     var userPick; 
-    var rightAnswer = 0;
-    var wrongAnswer = 0;
+    var rightAnswers = 0;
+    var wrongAnswers = 0;
     var questions = [
         {   question: "The Humble Wine Bar bakes their pizza's at over 600 degrees fahrenheit?",
         choices: ["True", "False"],
@@ -91,48 +91,128 @@ $(document).ready(function() {
 //  function to choose and display random question in the 4 different question divs
     function displayQuestions() {
         for (var i = 0; i < questions.length; i++) {
-            $("#question1").text(questions[i])
-            $("#question2").text(questions[i])
-            $("#question3").text(questions[i])
-            $("#question4").text(questions[i])
-                console.log(questions[i])
+            $("#question1").text(questions[i].question)
+            $("#question2").text(questions[i].question)
+            $("#question3").text(questions[i].question)
+            $("#question4").text(questions[i].question)
+                console.log(questions[i].question)
         }
-    }; displayQuestions();
-//  display questions function ends here
+    }; displayQuestions();  //  display questions function ends here
 
 //  function to capture player answer, display correct or incorrect graphic associated with that choice in the 4 different confirm divs
 //  and increase by one the appropriate right vs. wrong answers variable
     function displayAnswers()   {
-        $(".answers1").on("click", function(event) {
+
+        //  conditional statement for true button question 1
+        $("#aTrue1").on("click", function(event) {  
             if (userPick == questions[i].validAnswer)  {
                 $("#confirm1").attr("src", "assets/images/checkmark.jpg");
-                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
-                $("#confirm3").attr("src", "assets/images/checkmark.jpg");
-                $("#confirm4").attr("src", "assets/images/checkmark.jpg");
-                rightAnswer++
+                    rightAnswers++
                     console.log("Number of right answers: " + rightAnswers);
-            }   else (userPick !== questions[i].validAnswer)  
+            }   else   
                     $("#confirm1").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for false button question 1
+        $("#aFalse1").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm1").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
+                    $("#confirm1").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for true button question 2
+        $("#aTrue2").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
                     $("#confirm2").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for false button question 2                    
+        $("#aFalse2").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
+                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for true button question 3
+        $("#aTrue2").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
+                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for false button question 3                    
+        $("#aFalse2").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
+                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for true button question 4
+        $("#aTrue3").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm3").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
                     $("#confirm3").attr("src", "assets/images/xmark.jpg");
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+
+        //  conditional statement for false button question 4                    
+        $("#aFalse4").on("click", function(event) {
+            if (userPick == questions[i].validAnswer)  {
+                $("#confirm4").attr("src", "assets/images/checkmark.jpg");
+                    rightAnswers++
+                        console.log("Number of right answers: " + rightAnswers);
+            }   else   
                     $("#confirm4").attr("src", "assets/images/xmark.jpg");
-                    wrongAnswer++
-                        console.log("Number of wrong answers: " + wrongAnswers);
-        })
-    }; 
-        // The on click event should execute the display answers function
+                        wrongAnswers++
+                            console.log("Number of wrong answers: " + wrongAnswers);
+        });
+    } 
+        // The on click events should execute the display answers function
         //  display answers function ends here        
 
-        //  this event replaces the four answered questions with new questions and clears the answer graphics from the 4 different confirm divs
+        //  this on click event clears the current questions and answer graphics 
+        //and calls the display questions function to replenish the questions
     $("#playAgain").on("click", function() { 
-        displayQuestions();
-            $("#confirm1").empty();
+        $("#question1").empty()
+        $("#confirm1").empty();
+            $("#question2").empty()
             $("#confirm2").empty();
-            $("#confirm3").empty();
-            $("#confirm4").empty();
-                console.log("play again button was clicked");
-    });
-       //  play again function ends here
+                $("#question3").empty()
+                $("#confirm3").empty();
+                    $("#question4").empty()
+                    $("#confirm4").empty();
+                        console.log("play again button was clicked");
+    }); displayQuestions();    //  play again function ends here
 });
-
- 
