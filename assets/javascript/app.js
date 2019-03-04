@@ -1,218 +1,349 @@
-//Create a game where players have a set time to answer trivia questions. 
-//Timer starts when page loads. Answers are true or false. 
-//Players click on true or false buttons.
-//When player answers - imediately display check for right or x for wrong.
-
-//alert("hello");
-
-$(document).ready(function() {
-
-    var userPick; 
-    var rightAnswers = 0;
-    var wrongAnswers = 0;
-    var questions = [
-        {   question: "The Humble Wine Bar bakes their pizza's at over 600 degrees fahrenheit?",
-        choices: ["True", "False"],
-        validAnswer: 0
-        }, 
-        {   question:"There are over 1000 muscles in your body?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        }, 
-        {   question:"The Lamborghini Aventador is the most expensive car in the world?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        }, 
-        {   question:"Redbubble is a print-on-demand website where you can buy cool t-shirts and other custom designed products?",
-        choices: ["True", "False"],
-        validAnswer: 0
-        }, 
-        {   question:"Coding is fucking hard?",
-        choices: ["True", "False"],
-        validAnswer: 0
-        },
-        {   question:"LeBron James plays for the Cleveland Cavaliers",
-        choices: ["True", "False"],
-        validAnswer: 1
-        },
-        {   question:"A dirty Martini was dropped on the floor?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        },
-        {   question:"James Bond drinks his Martini's stirred, not shaken?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        }, 
-        {   question:"The Cleveland Indians won 150 games in the 1995 season?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        }, 
-        {   question:"Anchovies are known as the 'Chicken of the sea?",
-        choices: ["True", "False"],
-        validAnswer: 1
-        }, 
-        {   question:"Cinnamon is made naturally from tree bark?",
-        choices: ["True", "False"],
-        validAnswer: 0
-        }, 
-        {   question:"The Rolling Stones produced their first album in 1962?",
-        choices: ["True", "False"],
-        validAnswer: 0
-        },
-    ];
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
 
 //Timer
 //  Set number to countdown from 30.
-    var number = 30;
-    var startCounting;
+var number = 90;
+var startCounting;
 
 //  When the start button gets clicked, start the countdown
-    $("#ready").on("click", function()  {
-    //function run() {
-        clearInterval(startCounting);
-        startCounting = setInterval(decrement, 1000);
-    });
-//  Countdown
-    function decrement() {
-    number--;
-    $("#countdown").html(number);
-    if (number === 0) {
-        stop();
-    }
-    }
-//  Stop
-    function stop() {
+$("#ready").on("click", function()  {
+//function run() {
     clearInterval(startCounting);
-    //  when time runs out alert player of right and wrong answers. Invite player to play again
-    alert("Time's up", "Number of right answers: " + rightAnswers, "Number of wrong answers: " + wrongAnswers, "Please play again!");
-    }
+    startCounting = setInterval(decrement, 1000);
+});
+//  Countdown
+function decrement() {
+number--;
+$("#countdown").html(number);
+if (number === 0) {
+    stop();
+}
+}
+//  Stop
+function stop() {
+clearInterval(startCounting);
+//  when time runs out alert player of right and wrong answers. Invite player to play again
+//alert("Time's up", "Number of right answers: " + rightAnswers, "Number of wrong answers: " + wrongAnswers, "Please play again!");
+}
 //  timer code ends here
 
-//  function to choose and display random question in the 4 different question divs
-    function displayQuestions() {
-        for (var i = 0; i < questions.length; i++) {
-            $("#question1").text(questions[i].question)
-            $("#question2").text(questions[i].question)
-            $("#question3").text(questions[i].question)
-            $("#question4").text(questions[i].question)
-                console.log(questions[i].question)
+(function() {
+    var myQuestions = [
+        {
+          question: "In the year 1900 in the U.S. what were the most popular first names given to boy and girl babies?",
+          answers: {
+            a: "William and Elizabeth",
+            b: "Joseph and Catherine",
+            c: "John and Mary",
+            d: "George and Anne"
+          },
+          correctAnswer: "c"
+        },
+        {
+          question: "When did the Liberty Bell get its name?",
+          answers: {
+            a: "when it was made, in 1701",
+            b: "when it rang on July 4, 1776",
+            c: "in the 19th century, when it became a symbol of the abolition of slavery",
+            d: "none of the above"
+          },
+          correctAnswer: "c"
+        },
+        {
+          question: "In the Roy Rogers -Dale Evans Museum, you will find Roy and Dales stuffed horses. Roy's horse was named Trigger, which was Dales horse?",
+          answers: {
+            a: "Buttermilk",
+            b: "Daisy",
+            c: "Scout",
+            d: "Tulip"
+          },
+          correctAnswer: "a"
+        },
+        {
+            question: "The Daniel Boon museum at the home where he died can best be described how?",
+            answers: {
+              a: "a log cabin in Kentucky",
+              b: "a two-story clapboard house in Tennessee",
+              c: "a four-story Georgian-style home in Missouri",
+              d: "a three story brick house in Arkansas"
+            },
+            correctAnswer: "a"
+          },
+          {
+            question: "Which of the following items was owned by the fewest U.S. homes in 1990?",
+            answers: {
+              a: "home computer",
+              b: "compact disk player",
+              c: "cordless phone",
+              d: "dishwasher"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "Who holds the record for the most victories in a row on the professional golf tour?",
+            answers: {
+              a: "Jack Nicklaus",
+              b: "Arnold Palmer",
+              c: "Byron Nelson",
+              d: "Ben Hogan"
+            },
+            correctAnswer: "c"
+          },
+          {
+            question: "Who is third behind Hank Aaron and Babe Ruth in major league career home runs?",
+            answers: {
+              a: "Reggie Jackson",
+              b: "Harmon Killebrew",
+              c: "Willie Mays",
+              d: "Frank Robinson"
+            },
+            correctAnswer: "c"
+          },
+          {
+            question: "In 1990, in what percentage of U.S. married couples did the wife earn more money than the husband?",
+            answers: {
+              a: "8",
+              b: "18",
+              c: "38",
+              d: "58"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "During the 1980s for six consecutive years what breed of dog was the most popular in the U.S.?",
+            answers: {
+              a: "cocker spaniel",
+              b: "German shepherd",
+              c: "Labrador retriever",
+              d: "poodle"
+            },
+            correctAnswer: "a"
+          },
+          {
+            question: "In 1985, five percent of U.S. households had telephone answering machines. By 1990 what percentage of homes had answering machines?",
+            answers: {
+              a: "10 percent",
+              b: "15 percent",
+              c: "31 percent",
+              d: "51 percent"
+            },
+            correctAnswer: "c"
+          },
+          {
+            question: "The first black American pictured on a U.S. postage stamp was who?",
+            answers: {
+              a: "Frederick Douglass",
+              b: "Booker T. Washington",
+              c: "3Louis Armstrong",
+              d: "Joe Louis"
+            },
+            correctAnswer: "c"
+          },
+          {
+            question: "What did the 'D' in 'D-Day' stand for?",
+            answers: {
+              a: "doom",
+              b: "day",
+              c: "Dwight (Eisenhower)",
+              d: "Dunkirk"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "The Brownie Box Camera introduced by Eastman Kodak in 1900 had a retail price of what?",
+            answers: {
+              a: "$1",
+              b: "$5",
+              c: "$10",
+              d: "$20"
+            },
+            correctAnswer: "a"
+          },
+          {
+            question: "Which of these characters turned 40 years old in 1990?",
+            answers: {
+              a: "Charlie Brown",
+              b: "Bugs Bunny",
+              c: "Mickey Mouse",
+              d: "Fred Flintstone"
+            },
+            correctAnswer: "a"
+          },
+          {
+            question: "The Philadelphia mint started putting a 'P' mint mark on quarters when?",
+            answers: {
+              a: "1940",
+              b: "1960",
+              c: "1980",
+              d: "never"
+            },
+            correctAnswer: "c"
+          },
+          {
+            question: "Before becoming George Bush's Secretary of Defense, what was Dick Cheney's position?",
+            answers: {
+              a: "congressman from Wyoming",
+              b: "governor of New Hampshire",
+              c: "secretary of defense under Ronald Reagan",
+              d: "senator from Oklahoma"
+            },
+            correctAnswer: "a"
+          },
+          {
+            question: "When Mt. St. Helens erupted on May 18, 1980, how many people were killed?",
+            answers: {
+              a: "1",
+              b: "57",
+              c: "164",
+              d: "218"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "In J. Edgar Hoover, what did the J stand for?",
+            answers: {
+              a: "James",
+              b: "John",
+              c: "Joseph",
+              d: "Jeffrey"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "Florence Nightingale became known as 'the Lady With the Lamp' during which war?",
+            answers: {
+              a: "American Civil War",
+              b: "Crimean War",
+              c: "World War I",
+              d: "World War II"
+            },
+            correctAnswer: "b"
+          },
+          {
+            question: "What year was it that the Census Bureau first reported that a majority of new mothers  were remaining in the new job market?",
+            answers: {
+              a: "1968",
+              b: "1978",
+              c: "1988",
+              d: "1998"
+            },
+            correctAnswer: "c"
+          },
+      ];
+
+  
+    function buildQuiz() {
+      // we'll need a place to store the HTML output
+      const output = [];
+  
+      // for each question...
+      myQuestions.forEach((currentQuestion, questionNumber) => {
+        // we'll want to store the list of answer choices
+        const answers = [];
+  
+        // and for each available answer...
+        for (letter in currentQuestion.answers) {
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+               <input type="radio" name="question${questionNumber}" value="${letter}">
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+             </label>`
+          );
         }
-    }; displayQuestions();  //  display questions function ends here
-
-//  function to capture player answer, display correct or incorrect graphic associated with that choice in the 4 different confirm divs
-//  and increase by one the appropriate right vs. wrong answers variable
-    function displayAnswers()   {
-
-        //  conditional statement for true button question 1
-        $("#aTrue1").on("click", function(event) {  
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm1").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                    console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm1").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for false button question 1
-        $("#aFalse1").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm1").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm1").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for true button question 2
-        $("#aTrue2").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for false button question 2                    
-        $("#aFalse2").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for true button question 3
-        $("#aTrue2").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for false button question 3                    
-        $("#aFalse2").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm2").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm2").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for true button question 4
-        $("#aTrue3").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm3").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm3").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-
-        //  conditional statement for false button question 4                    
-        $("#aFalse4").on("click", function(event) {
-            if (userPick == questions[i].validAnswer)  {
-                $("#confirm4").attr("src", "assets/images/checkmark.jpg");
-                    rightAnswers++
-                        console.log("Number of right answers: " + rightAnswers);
-            }   else   
-                    $("#confirm4").attr("src", "assets/images/xmark.jpg");
-                        wrongAnswers++
-                            console.log("Number of wrong answers: " + wrongAnswers);
-        });
-    } 
-        // The on click events should execute the display answers function
-        //  display answers function ends here        
-
-        //  this on click event clears the current questions and answer graphics 
-        //and calls the display questions function to replenish the questions
-    $("#playAgain").on("click", function() { 
-        $("#question1").empty()
-        $("#confirm1").empty();
-            $("#question2").empty()
-            $("#confirm2").empty();
-                $("#question3").empty()
-                $("#confirm3").empty();
-                    $("#question4").empty()
-                    $("#confirm4").empty();
-                        console.log("play again button was clicked");
-    }); displayQuestions();    //  play again function ends here
-});
+  
+        // add this question and its answers to the output
+        output.push(
+          `<div class="slide">
+             <div class="question"> ${currentQuestion.question} </div>
+             <div class="answers"> ${answers.join("")} </div>
+           </div>`
+        );
+      });
+  
+      // finally combine our output list into one string of HTML and put it on the page
+      quizContainer.innerHTML = output.join("");
+    }
+  
+    function showResults() {
+      // gather answer containers from our quiz
+      const answerContainers = quizContainer.querySelectorAll(".answers");
+  
+      // keep track of user's answers
+      let numCorrect = 0;
+  
+      // for each question...
+      myQuestions.forEach((currentQuestion, questionNumber) => {
+        // find selected answer
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  
+        // if answer is correct
+        if (userAnswer === currentQuestion.correctAnswer) {
+          // add to the number of correct answers
+          numCorrect++;
+  
+          // color the answers green
+          answerContainers[questionNumber].style.color = "lightgreen";
+        } else {
+          // if answer is wrong or blank
+          // color the answers red
+          answerContainers[questionNumber].style.color = "red";
+        }
+      });
+  
+      // show number of correct answers out of total
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    }
+  
+    function showSlide(n) {
+      slides[currentSlide].classList.remove("active-slide");
+      slides[n].classList.add("active-slide");
+      currentSlide = n;
+      
+      if (currentSlide === 0) {
+        previousButton.style.display = "none";
+      } else {
+        previousButton.style.display = "inline-block";
+      }
+      
+      if (currentSlide === slides.length - 1) {
+        nextButton.style.display = "none";
+        submitButton.style.display = "inline-block";
+      } else {
+        nextButton.style.display = "inline-block";
+        submitButton.style.display = "none";
+      }
+    }
+  
+    function showNextSlide() {
+      showSlide(currentSlide + 1);
+    }
+  
+    function showPreviousSlide() {
+      showSlide(currentSlide - 1);
+    }
+  
+    const quizContainer = document.getElementById("quiz");
+    const resultsContainer = document.getElementById("results");
+    const submitButton = document.getElementById("submit");
+  
+    // display quiz right away
+    buildQuiz();
+  
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+  
+    showSlide(0);
+  
+    // on submit, show results
+    submitButton.addEventListener("click", showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+  })();
